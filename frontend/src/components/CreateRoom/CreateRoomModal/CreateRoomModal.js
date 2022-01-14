@@ -88,15 +88,7 @@ export default function CreateRoom({ socket, handleCreateRoom }) {
     {
       value: 3,
       label: '3',
-    },
-    {
-      value: 4,
-      label: '4',
-    },
-    {
-      value: 5,
-      label: '5',
-    },
+    }
 
   ];
 
@@ -114,7 +106,7 @@ export default function CreateRoom({ socket, handleCreateRoom }) {
   const [room_name, setRoomName] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [max_players, setMaxPlayers] = React.useState(5)
-  const [rounds, setRounds] = React.useState(3)
+  const [rounds, setRounds] = React.useState(2)
   const [alert, setAlert] = React.useState(false);
   const [alertPass, setAlertPass] = React.useState(false);
 
@@ -228,7 +220,7 @@ export default function CreateRoom({ socket, handleCreateRoom }) {
             marks={rounds_marks}
             valueLabelDisplay="on"
             min={1}
-            max={5}
+            max={3}
             className="scroll_bar_margin"
             onChange={handleRoundsChange}
           />
