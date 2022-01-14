@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import RoomList from './roomList';
 import CreateRoom from '../CreateRoom/CreateRoomModal/CreateRoomModal';
-import Statistics from './statistics';
-import logo from '../../static/drawguesslogo.png';
+//import logo from '../../static/drawguesslogo.png';
 import publicRoom from '../../static/publicRoom.png';
 import privateRoom from '../../static/privateRoom.png';
 import allRoom from '../../static/allRoom.png';
@@ -16,16 +15,16 @@ export default function Lobby({ socket, userName, rooms, isLogin }) {
   const [Clickon] = useSound(ClickonSfx);
   const [roomType, setRoomType] = useState("All");
   const history = useHistory();
-  const [stats, setStats] = React.useState({
-    rounds: 0,
-    firstRanks: 0,
-    secondRanks: 0,
-    thirdRanks: 0,
-    firstRate: 0,
-    secondRate: 0,
-    thirdRate: 0,
-    history: []
-  });
+  // const [stats, setStats] = React.useState({
+  //   rounds: 0,
+  //   firstRanks: 0,
+  //   secondRanks: 0,
+  //   thirdRanks: 0,
+  //   firstRate: 0,
+  //   secondRate: 0,
+  //   thirdRate: 0,
+  //   history: []
+  // });
 
   const [loading, setLoading] = React.useState(false);
 
@@ -37,13 +36,13 @@ export default function Lobby({ socket, userName, rooms, isLogin }) {
     })
   }, []);
 
-  React.useEffect(() => {
-    socket.on('setStats', (data) => {
-      setStats(data);
-      console.log(data);
+  // React.useEffect(() => {
+  //   socket.on('setStats', (data) => {
+  //     setStats(data);
+  //     console.log(data);
 
-    })
-  }, []);
+  //   })
+  // }, []);
 
   const handleRoomSelection = (roomType) => {
     Clickon();
@@ -99,9 +98,9 @@ export default function Lobby({ socket, userName, rooms, isLogin }) {
     <div className="lobby flex">
       <div className="left flex">
         <div className="left-top glass-blur flex flex-column">
-          <div className="logo-bg lobby-title">
+          {/* <div className="logo-bg lobby-title">
             <img src={logo} alt="logo"></img>
-          </div>
+          </div> */}
           <div className="account-bg">
             <div className="account-name">Hello, {userName}</div>
             <div className="logout-btn" onClick={e => handleLogout()}>Logout</div>
@@ -129,10 +128,10 @@ export default function Lobby({ socket, userName, rooms, isLogin }) {
           <RoomList rooms={rooms} joinRoom={handleJoinRoom} show={roomType}></RoomList>
         </div>
       </div>
-      <div className="right glass-blur flex flex-column">
+      {/* <div className="right glass-blur flex flex-column">
         <div className="stats-banner lobby-title text-title">Statistics</div>
         <Statistics data={stats} />
-      </div>
+      </div> */}
     </div>
   );
 }
