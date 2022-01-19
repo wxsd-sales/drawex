@@ -24,7 +24,6 @@ MongoClient.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true },
   if (err) return console.log(err)
 
   console.log("MongoDb connected successfully")
-  // Make sure you add the database name and not the collection name
   database = database.db("docusign")
   io.on('connection', function (socket) {
     const init_data = { rooms: all_room_info }

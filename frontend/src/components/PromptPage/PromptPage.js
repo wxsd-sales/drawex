@@ -3,7 +3,6 @@ import {
   useHistory
 } from "react-router-dom";
 import "./PromptPage.css";
-import logo from '../../static/drawguesslogo.png';
 
 export default function PromptPage({ info }) {
   var history = useHistory();
@@ -16,7 +15,7 @@ export default function PromptPage({ info }) {
   return (
     <div className="promptCard">
       <div className="promptCard-top">
-        <img src={logo} className="promptCard-logo" alt="prompt card logo"></img>
+        {/* <img src={logo} className="promptCard-logo" alt="prompt card logo"></img> */}
         <div className="promptCard-top-info">
           {info}
         </div>

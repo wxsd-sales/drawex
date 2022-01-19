@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RoomList from './roomList';
 import CreateRoom from '../CreateRoom/CreateRoomModal/CreateRoomModal';
-//import logo from '../../static/drawguesslogo.png';
+
 import publicRoom from '../../static/publicRoom.png';
 import privateRoom from '../../static/privateRoom.png';
 import allRoom from '../../static/allRoom.png';
@@ -60,7 +60,7 @@ export default function Lobby({ socket, userName, rooms, isLogin }) {
 
   React.useEffect(() => {
     socket.on('autoLoginSuccess', () => {
-      console.log("ss")
+      console.log("autologin success")
       setLoading(false)
       socket.emit('gameStats', (userName));
     })
