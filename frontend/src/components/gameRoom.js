@@ -7,6 +7,7 @@ import './lobby/lobby.css';
 import HostIcon from '../static/house.png';
 import BrushIcon from '../static/brush.png';
 import ReturnIcon from '../static/return.png';
+import ShareIcon from '../static/create.png';
 import { useHistory } from "react-router-dom";
 
 import useSound from 'use-sound';
@@ -16,6 +17,8 @@ import ClickonSfx from '../sounds/Clickon.wav';
 import successSfx from '../sounds/success.wav';
 
 export default function GameRoom({ socket, userName, init_room }) {
+  console.log("Init room value")
+  console.log(init_room)
   const [Clickon] = useSound(ClickonSfx);
   const [success] = useSound(successSfx);
   const [roomInfo, setRoomInfo] = React.useState(init_room)
@@ -72,6 +75,11 @@ export default function GameRoom({ socket, userName, init_room }) {
     socket.emit("leaveRoom", roomInfo)
   }
 
+  function copyLinkText() {
+    var textValue = `http://localhost:3000/room/${roomInfo.roomID}`;
+    alert(textValue)
+  }
+
   return (
     <div className="room-bg ">
       <div className="room-container flex-column">
@@ -82,6 +90,10 @@ export default function GameRoom({ socket, userName, init_room }) {
               <div className="return-text"><span> Return</span></div>
             </div>
             <h5 className="title-font text-title room-banner-title">{roomInfo.roomName}</h5>
+            <div className="share-btn" onClick={e => copyLinkText()}>
+              <div className="share-button" ></div>
+              <div className="share-text"><span> Copy Link</span></div>
+            </div>
           </div>
         </div>
         <div className="block-2">

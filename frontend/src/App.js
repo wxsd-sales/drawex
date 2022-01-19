@@ -16,7 +16,7 @@ import {
 
 const socket = io('ws://localhost:8000')
 
-function App() {
+function App(props) {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName'))
   const [rooms, setRooms] = React.useState([])
   const [isLogin, setLogin] = React.useState(false)
@@ -52,7 +52,7 @@ function App() {
             {userName === null ? <Redirect to="/login" /> :
               <div className="App">
                 <header className="App-header main-background">
-                  <Lobby socket={socket} userName={userName} rooms={rooms} isLogin={isLogin} handleLogin={handleLogin}></Lobby>
+                  <Lobby socket={socket} userName={userName} rooms={rooms} isLogin={isLogin} handleLogin={handleLogin} embeddedAppSDK={props.embeddedAppSDK}></Lobby>
                 </header>
               </div>
             }
@@ -61,7 +61,7 @@ function App() {
           <Route exact path='/register'>
             <div className="App">
               <header className="App-header main-background">
-                <Register socket={socket}></Register>
+                <Register socket={socket} embeddedAppSDK={props.embeddedAppSDK}></Register>
               </header>
             </div>
           </Route>
@@ -69,7 +69,7 @@ function App() {
           <Route exact path='/login'>
             <div className="App">
               <header className="App-header main-background">    
-                <Login socket={socket} handleLogin={handleLogin} />
+                <Login socket={socket} handleLogin={handleLogin} embeddedAppSDK={props.embeddedAppSDK}/>
               </header>
             </div>
           </Route>
@@ -80,7 +80,7 @@ function App() {
                 return <Redirect to="/login" />
               } else {
                 return (<div className="App main-background">
-                  <Game socket={socket} userName={userName} />
+                  <Game socket={socket} userName={userName} embeddedAppSDK={props.embeddedAppSDK}/>
                 </div>)
               }
             })()}

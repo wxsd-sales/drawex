@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-
   },
   avatar: {
     margin: theme.spacing(1),
@@ -48,6 +47,13 @@ export default function Login({ socket, handleLogin }) {
   const [username, handleUsernameChange] = React.useState('')
   const [showWarning, handleShowWarning] = React.useState(false)
   const history = useHistory();
+
+  // const allowOthers = (event) => {
+  //   event.preventDefault();
+  //   props.embeddedAppSDK.shareApp(`https://6b47-2601-647-4180-b520-a8bd-7dc5-65c7-218e.ngrok.io/`);
+  //   Clickon();
+  //   socket.emit('login', username)
+  // };
 
   React.useEffect(() => {
     socket.on('loginSuccess', (data) => {

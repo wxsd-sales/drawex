@@ -23,10 +23,10 @@ var onlineUsers = [];
 MongoClient.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true }, (err, database) => {
   if (err) return console.log(err)
 
+  console.log("MongoDb connected successfully")
   // Make sure you add the database name and not the collection name
-  database = database.db("drawguess")
+  database = database.db("docusign")
   io.on('connection', function (socket) {
-    //调用传入的回调方法，将操作结果返回
     const init_data = { rooms: all_room_info }
     setTimeout(function () {
 

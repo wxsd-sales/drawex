@@ -47,6 +47,8 @@ export default function Login({socket,handleLogin}) {
   React.useEffect(() => {
     socket.on('loginSuccess', (data) => {
       handleLogin(data.userName, data.initdata)
+      console.log(data.userName)
+      console.log(data.initdata)
       localStorage.setItem("userName",data.userName)
       history.push('/')
     })

@@ -8,6 +8,46 @@
   height: 100vh;
 }
 
+.share-btn {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  padding: 0.2em;
+  border-radius: 15px;
+  height: 40px;
+  margin: 5px;
+  font-size: large;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+  position: absolute;
+  right: 10px;
+}
+
+.share-button {
+  height: 80%;
+}
+
+.share-button img {
+  height: 100%;
+}
+
+.share-btn:hover {
+  transform: scale(1.1);
+  background: rgba(200, 200, 200, 0.3);
+}
+
+.share-btn:hover span {
+  color: white;
+}
+
+.share-text {
+  color: #000;
+  margin: 0 5px;
+  letter-spacing: 0.1em;
+}
+
 .rounded-rect {
   border-radius: 15px;
 }

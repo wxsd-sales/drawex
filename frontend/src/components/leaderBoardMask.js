@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import "./leaderBoardMask.css";
 
 export default function LeaderBoardMask({ players }) {
-
+  console.log("players info: ")
+  console.log(players)
   const [sortedPlayers, setSortedPlayers] = useState(null);
 
   useEffect(() => {
@@ -16,6 +17,8 @@ export default function LeaderBoardMask({ players }) {
 
   function getTopThreePlayers() {
     const topThree = sortedPlayers.slice(0, 3);
+    console.log("Top three info: ")
+    console.log(topThree)
     return (
       <div className="top-three flex-column">
         {
