@@ -8,8 +8,6 @@ import Alert from '@material-ui/lab/Alert';
 import {
   useHistory
 } from "react-router-dom";
-import useSound from 'use-sound';
-import ClickonSfx from '../../sounds/Clickon.wav';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,14 +41,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login({ socket, handleLogin }) {
   const classes = useStyles();
-  const [Clickon] = useSound(ClickonSfx);
   const [username, handleUsernameChange] = React.useState('')
   const [showWarning, handleShowWarning] = React.useState(false)
   const history = useHistory();
 
   // const allowOthers = (event) => {
   //   event.preventDefault();
-  //   props.embeddedAppSDK.shareApp(`https://6b47-2601-647-4180-b520-a8bd-7dc5-65c7-218e.ngrok.io/`);
+  //   props.embeddedAppSDK.shareApp(`https://1da7-73-70-239-210.ngrok.io/`);
   //   Clickon();
   //   socket.emit('login', username)
   // };
@@ -69,7 +66,6 @@ export default function Login({ socket, handleLogin }) {
   }, []);
 
   function login() {
-    Clickon();
     socket.emit('login', username)
   }
 

@@ -45,13 +45,9 @@
 }
 
 .main-background {
-  background: linear-gradient(
-    to right,
-    rgba(147, 214, 242, 1) 0%,
-    rgba(235, 177, 228, 1) 64%,
-    rgba(255, 162, 175, 0.9) 100%
-  );
+  background:rgba(147, 214, 242)
 }
+
 
 .App-header {
   /* background-image:url(https://media.giphy.com/media/l1BgRuUbcL5wgQLtu/giphy.gif); */

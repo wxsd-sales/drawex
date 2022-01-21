@@ -17,6 +17,8 @@ import {
 const socket = io('ws://localhost:8000')
 
 function App(props) {
+  console.log("App ------------------")
+  console.log(props)
   const [userName, setUserName] = React.useState(localStorage.getItem('userName'))
   const [rooms, setRooms] = React.useState([])
   const [isLogin, setLogin] = React.useState(false)
@@ -27,7 +29,7 @@ function App(props) {
     setLogin(true);
   }
   React.useEffect(() => {
-    socket.on('updateRoomInfo', (data) => {   //Listen for "Create Room"
+    socket.on('updateRoomInfo', (data) => { 
       setRooms(data)
     })
   }, []);
@@ -38,7 +40,7 @@ function App(props) {
     })
   }, []);
   React.useEffect(() => {
-    socket.on('updateRoomInfo', (data) => {   //Listen for "Create Room"
+    socket.on('updateRoomInfo', (data) => {   
       setRooms(data)
     })
   }, []);
@@ -52,7 +54,7 @@ function App(props) {
             {userName === null ? <Redirect to="/login" /> :
               <div className="App">
                 <header className="App-header main-background">
-                  <Lobby socket={socket} userName={userName} rooms={rooms} isLogin={isLogin} handleLogin={handleLogin} embeddedAppSDK={props.embeddedAppSDK}></Lobby>
+                  <Lobby socket={socket} userName={userName} rooms={rooms} isLogin={isLogin} handleLogin={handleLogin} embeddedAppSDK={props}></Lobby>
                 </header>
               </div>
             }
@@ -61,7 +63,7 @@ function App(props) {
           <Route exact path='/register'>
             <div className="App">
               <header className="App-header main-background">
-                <Register socket={socket} embeddedAppSDK={props.embeddedAppSDK}></Register>
+                <Register socket={socket} embeddedAppSDK={props}></Register>
               </header>
             </div>
           </Route>
@@ -69,7 +71,7 @@ function App(props) {
           <Route exact path='/login'>
             <div className="App">
               <header className="App-header main-background">    
-                <Login socket={socket} handleLogin={handleLogin} embeddedAppSDK={props.embeddedAppSDK}/>
+                <Login socket={socket} handleLogin={handleLogin} embeddedAppSDK={props}/>
               </header>
             </div>
           </Route>
@@ -80,7 +82,7 @@ function App(props) {
                 return <Redirect to="/login" />
               } else {
                 return (<div className="App main-background">
-                  <Game socket={socket} userName={userName} embeddedAppSDK={props.embeddedAppSDK}/>
+                  <Game socket={socket} userName={userName} embeddedAppSDK={props}/>
                 </div>)
               }
             })()}

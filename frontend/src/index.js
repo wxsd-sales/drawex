@@ -6,12 +6,12 @@ import EmbeddedAppSDK from './EmbeddedAppSDK';
 
 const embeddedAppSDK = new EmbeddedAppSDK();
 
-embeddedAppSDK.onReady().then(() => {
-  console.log("My app is running 🎉")
+// embeddedAppSDK.onReady().then(() => {
+//   console.log("My app is running 🎉")
   ReactDOM.render(
     <React.StrictMode>
       <App embeddedAppSDK={embeddedAppSDK}/>
     </React.StrictMode>,
     document.getElementById('root')
   );
-})
+// })

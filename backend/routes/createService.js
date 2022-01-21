@@ -2,14 +2,20 @@ all_room_ID = []
 module.exports = {
   createRoom: function (app, socket, all_room_info, all_users, io) {
     socket.on('create_room', function (data) {
-      var tempID = parseInt(Math.random() * 9999).toString(); // The temporary room id
-      while (all_room_ID.indexOf(tempID) >= 0) { // Determine if there is a duplicate ID
+      var tempID = parseInt(Math.random() * 9999).toString(); 
+      console.log("tempID before")
+      console.log(tempID)
+      while (all_room_ID.indexOf(tempID) >= 0) {
         tempID = parseInt(Math.random() * 9999).toString();
+        console.log("tempID after")
+        console.log(tempID)
       }
       var user = null;
       for (i = 0; i < all_users.length; i++) {
         if (all_users[i].userName === data.userName) {
           user = all_users[i]
+          console.log("users")
+          console.log(users)
         }
       }
       all_room_ID.push(tempID)
@@ -23,7 +29,7 @@ module.exports = {
       data.room.currentPlayers += 1;
       var userScoreBoard = { userName: data.userName, score: 0, right: false };
       data.room.scoreBoard.push(userScoreBoard)
-      console.log("Create Room:", data.room)
+      //console.log("Create Room:", data.room)
 
       socket.emit('updateRoomInfo', all_room_info)
 

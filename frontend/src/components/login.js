@@ -3,20 +3,25 @@ import { useHistory } from "react-router-dom";
 import Alert from '@material-ui/lab/Alert';
 import './login.css';
 import '../App.css';
-import logo from '../static/drawguesslogo.png';
-import useSound from 'use-sound';
-import ClickonSfx from '../sounds/Clickon.wav';
 
-export default function Login({socket,handleLogin}) {
-  const [Clickon] = useSound(ClickonSfx);
+
+export default function Login({socket,handleLogin, embeddedAppSDK}) {
+ 
   const [password, setPassword] = React.useState("")
   const [emailUserName, setEmail] = React.useState("")
   const [info, setInfo] = React.useState("")
   var  history= useHistory();
-
+  
+  //console.log(embeddedAppSDK)
+  const allowOthers = (event) => {
+    event.preventDefault();
+    console.log("______login ea sdk________________")
+    console.log(embeddedAppSDK)
+    embeddedAppSDK.shareApp(`https://1da7-73-70-239-210.ngrok.io`);
+  };
 
   function handleLoginButton() {
-    Clickon();
+
     const data = { password: password, flag: emailUserName }
     if(password === ''|| emailUserName===''){
       setInfo("Please Enter All Your Login Information!");
@@ -27,7 +32,7 @@ export default function Login({socket,handleLogin}) {
   }
 
   function handleNavToReg(){
-    Clickon();
+
     history.push('/register')
   }
 
@@ -57,9 +62,9 @@ export default function Login({socket,handleLogin}) {
   return (
     <div className="card">
       <div className="card--header ">
-        <div className="logo-bg lobby-title">
+        {/* <div className="logo-bg lobby-title">
             <img src={logo} alt="logo"></img>
-          </div>
+          </div> */}
         <p className='title'>Login</p>
         {info===""? "" : <Alert severity="error">{info}</Alert>}
       </div>
@@ -88,6 +93,13 @@ export default function Login({socket,handleLogin}) {
           className="btn_sign-up"
           onClick={handleLoginButton} >
           Login
+            </button>
+            <button
+          type="submit" 
+          id="signup" 
+          className="btn_sign-up"
+          onClick={allowOthers} >
+          Share App
             </button>
         <p className="link"><a onClick={handleNavToReg}>Register</a></p>
     </div>

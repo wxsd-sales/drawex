@@ -8,23 +8,12 @@ import allRoom from '../../static/allRoom.png';
 import { useHistory } from "react-router-dom";
 import './lobby.css';
 
-import useSound from 'use-sound';
-import ClickonSfx from '../../sounds/Clickon.wav';
-
-export default function Lobby({ socket, userName, rooms, isLogin }) {
-  const [Clickon] = useSound(ClickonSfx);
+export default function Lobby({ socket, userName, rooms, isLogin, embeddedAppSDK }) {
+  console.log("Lobby ---------------------------")
+  console.log(embeddedAppSDK)
   const [roomType, setRoomType] = useState("All");
   const history = useHistory();
-  // const [stats, setStats] = React.useState({
-  //   rounds: 0,
-  //   firstRanks: 0,
-  //   secondRanks: 0,
-  //   thirdRanks: 0,
-  //   firstRate: 0,
-  //   secondRate: 0,
-  //   thirdRate: 0,
-  //   history: []
-  // });
+
 
   const [loading, setLoading] = React.useState(false);
 
@@ -45,7 +34,6 @@ export default function Lobby({ socket, userName, rooms, isLogin }) {
   // }, []);
 
   const handleRoomSelection = (roomType) => {
-    Clickon();
     console.log("Room type: ", roomType);
     setRoomType(roomType);
   }
@@ -76,20 +64,17 @@ export default function Lobby({ socket, userName, rooms, isLogin }) {
   }, []);
 
   function handleCreateRoom(room) {
-    Clickon();
     const data = { room: room, userName: userName }
     socket.emit('create_room', data);
   }
 
   function handleJoinRoom(roomID) {
-    Clickon();
     const temp = { roomID: roomID, userName: userName }
     socket.emit('joinRoom', temp)
   }
 
   function handleLogout() {
     history.go();
-    Clickon();
     history.push('/login');
     localStorage.clear();
   }
@@ -128,10 +113,6 @@ export default function Lobby({ socket, userName, rooms, isLogin }) {
           <RoomList rooms={rooms} joinRoom={handleJoinRoom} show={roomType}></RoomList>
         </div>
       </div>
-      {/* <div className="right glass-blur flex flex-column">
-        <div className="stats-banner lobby-title text-title">Statistics</div>
-        <Statistics data={stats} />
-      </div> */}
     </div>
   );
 }

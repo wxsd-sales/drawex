@@ -11,7 +11,6 @@ module.exports = function(app,socket,all_room_info,initdata,all_users,io,databas
 
   userService.userLogin(app,socket,all_room_info,initdata,all_users,database,onlineUsers);
   userService.userRegister(socket,io,database);
-  //userService.getGameStats(socket,database);
 
   gameService.chatAnswer(app,socket,all_room_info,all_users,io);
   gameService.beginGame(socket,io,all_room_info);

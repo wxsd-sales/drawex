@@ -90,14 +90,14 @@ module.exports = {
   userRegister: function (socket, io, database) {
     socket.on('register', function (data) {
       var query = { userName: data.userName };
-      database.collection("users").find(query).toArray(function (err, result) { //Check if the user name already exists?
+      database.collection("users").find(query).toArray(function (err, result) { 
         if (err) throw err;
         if (result.length === 0) {
           const query1 = { email: data.email }
-          database.collection("users").find(query1).toArray(function (err, res) { //Check if the email already exists?
+          database.collection("users").find(query1).toArray(function (err, res) { 
             if (err) throw err;
             if (res.length === 0) {
-              const new_user = { userName: data.userName, password: md5(data.password), email: data.email } //Encrypted password
+              const new_user = { userName: data.userName, password: md5(data.password), email: data.email } 
               database.collection("users").insertOne(new_user, function (err, res) {
                 if (err) throw err;
                 socket.emit("registerResponse", "success")
