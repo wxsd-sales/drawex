@@ -45,7 +45,7 @@ export default function GameExcessive({ socket, userName }) {
   return (
     <div>
       {(() => {
-        if (userName === null) {  //如果没有登陆， 去登陆页面
+        if (userName === null) {
           return <Redirect to="/login" />
         } else if (loading) {
           return (<div className="App main-background">
