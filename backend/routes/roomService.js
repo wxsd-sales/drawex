@@ -10,7 +10,7 @@ module.exports = {
         }
       }
 
-      if (current_room != null) { //Determine whether the local storage has the room
+      if (current_room != null) {
         if (current_room.maxPlayers === current_room.currentPlayers) {
           console.log("Room Full")
         } else {
@@ -43,11 +43,11 @@ module.exports = {
         }
       }
       var user = null;
-      if (current_room != null) { //Determine whether the local storage has the room
+      if (current_room != null) { 
         let flag = false
         current_room.scoreBoard.forEach(item => {
           if (data.userName === item.userName) {
-            flag = true //only ID
+            flag = true
           }
         })
 
