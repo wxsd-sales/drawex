@@ -246,7 +246,7 @@ module.exports = {
           const current_room = temp_data.current_room;
           const current_index = temp_data.current_index;
           clearInterval(wordTimer)
-          settingWordsSeconds = 10;
+          settingWordsSeconds = 15;
 
           if (current_room) {
             current_room.game.status = "drawing";
