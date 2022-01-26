@@ -1,6 +1,46 @@
 const data = {
   words: [
     {
+      word: "hub",
+      type: "cisco",
+    },
+    {
+      word: "port",
+      type: "cisco",
+    },
+    {
+      word: "switch",
+      type: "cisco",
+    },
+    {
+      word: "webcam",
+      type: "cisco",
+    },
+    {
+      word: "mute",
+      type: "cisco",
+    },
+    {
+      word: "webex",
+      type: "cisco",
+    },
+    {
+      word: "kiosk",
+      type: "cisco",
+    },
+    {
+      word: "video",
+      type: "cisco",
+    },
+    {
+      word: "meeting",
+      type: "cisco",
+    },
+    {
+      word: "chat",
+      type: "cisco",
+    },
+    {
       word: "grape",
       type: "food",
     },

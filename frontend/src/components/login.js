@@ -12,13 +12,6 @@ export default function Login({socket,handleLogin, embeddedAppSDK}) {
   const [info, setInfo] = React.useState("")
   var  history= useHistory();
   
-  //console.log(embeddedAppSDK)
-  const allowOthers = (event) => {
-    event.preventDefault();
-    console.log("______login ea sdk________________")
-    console.log(embeddedAppSDK)
-    embeddedAppSDK.shareApp(`https://1da7-73-70-239-210.ngrok.io`);
-  };
 
   function handleLoginButton() {
 
@@ -62,9 +55,6 @@ export default function Login({socket,handleLogin, embeddedAppSDK}) {
   return (
     <div className="card">
       <div className="card--header ">
-        {/* <div className="logo-bg lobby-title">
-            <img src={logo} alt="logo"></img>
-          </div> */}
         <p className='title'>Login</p>
         {info===""? "" : <Alert severity="error">{info}</Alert>}
       </div>
@@ -93,13 +83,6 @@ export default function Login({socket,handleLogin, embeddedAppSDK}) {
           className="btn_sign-up"
           onClick={handleLoginButton} >
           Login
-            </button>
-            <button
-          type="submit" 
-          id="signup" 
-          className="btn_sign-up"
-          onClick={allowOthers} >
-          Share App
             </button>
         <p className="link"><a onClick={handleNavToReg}>Register</a></p>
     </div>

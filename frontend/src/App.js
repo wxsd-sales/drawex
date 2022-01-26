@@ -16,9 +16,7 @@ import {
 
 const socket = io('ws://localhost:8000')
 
-function App(props) {
-  console.log("App ------------------")
-  console.log(props)
+function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName'))
   const [rooms, setRooms] = React.useState([])
   const [isLogin, setLogin] = React.useState(false)
@@ -54,7 +52,7 @@ function App(props) {
             {userName === null ? <Redirect to="/login" /> :
               <div className="App">
                 <header className="App-header main-background">
-                  <Lobby socket={socket} userName={userName} rooms={rooms} isLogin={isLogin} handleLogin={handleLogin} embeddedAppSDK={props}></Lobby>
+                  <Lobby socket={socket} userName={userName} rooms={rooms} isLogin={isLogin} handleLogin={handleLogin}></Lobby>
                 </header>
               </div>
             }
@@ -63,7 +61,7 @@ function App(props) {
           <Route exact path='/register'>
             <div className="App">
               <header className="App-header main-background">
-                <Register socket={socket} embeddedAppSDK={props}></Register>
+                <Register socket={socket}></Register>
               </header>
             </div>
           </Route>
@@ -71,7 +69,7 @@ function App(props) {
           <Route exact path='/login'>
             <div className="App">
               <header className="App-header main-background">    
-                <Login socket={socket} handleLogin={handleLogin} embeddedAppSDK={props}/>
+                <Login socket={socket} handleLogin={handleLogin}/>
               </header>
             </div>
           </Route>
@@ -82,7 +80,7 @@ function App(props) {
                 return <Redirect to="/login" />
               } else {
                 return (<div className="App main-background">
-                  <Game socket={socket} userName={userName} embeddedAppSDK={props}/>
+                  <Game socket={socket} userName={userName}/>
                 </div>)
               }
             })()}

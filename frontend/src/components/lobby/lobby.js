@@ -9,8 +9,6 @@ import { useHistory } from "react-router-dom";
 import './lobby.css';
 
 export default function Lobby({ socket, userName, rooms, isLogin, embeddedAppSDK }) {
-  console.log("Lobby ---------------------------")
-  console.log(embeddedAppSDK)
   const [roomType, setRoomType] = useState("All");
   const history = useHistory();
 
@@ -24,14 +22,6 @@ export default function Lobby({ socket, userName, rooms, isLogin, embeddedAppSDK
 
     })
   }, []);
-
-  // React.useEffect(() => {
-  //   socket.on('setStats', (data) => {
-  //     setStats(data);
-  //     console.log(data);
-
-  //   })
-  // }, []);
 
   const handleRoomSelection = (roomType) => {
     console.log("Room type: ", roomType);
@@ -83,9 +73,6 @@ export default function Lobby({ socket, userName, rooms, isLogin, embeddedAppSDK
     <div className="lobby flex">
       <div className="left flex">
         <div className="left-top glass-blur flex flex-column">
-          {/* <div className="logo-bg lobby-title">
-            <img src={logo} alt="logo"></img>
-          </div> */}
           <div className="account-bg">
             <div className="account-name">Hello, {userName}</div>
             <div className="logout-btn" onClick={e => handleLogout()}>Logout</div>
