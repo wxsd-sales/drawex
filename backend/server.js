@@ -20,6 +20,9 @@ var all_room_info = []
 var all_users = []
 var onlineUsers = [];
 
+app.get('/', (req,res)=>{
+  res.send("hello I'm connected")
+})
 MongoClient.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true }, (err, database) => {
   if (err) return console.log(err)
 

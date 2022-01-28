@@ -45,13 +45,6 @@ export default function Login({ socket, handleLogin }) {
   const [showWarning, handleShowWarning] = React.useState(false)
   const history = useHistory();
 
-  // const allowOthers = (event) => {
-  //   event.preventDefault();
-  //   props.embeddedAppSDK.shareApp(`https://1da7-73-70-239-210.ngrok.io/`);
-  //   Clickon();
-  //   socket.emit('login', username)
-  // };
-
   React.useEffect(() => {
     socket.on('loginSuccess', (data) => {
       handleLogin(data.username, data.initdata)

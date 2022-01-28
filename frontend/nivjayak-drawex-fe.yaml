@@ -1,0 +1,75 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: nivjayak-drawex-fe
+  labels:
+    name: nivjayak-drawex-fe
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: nivjayak-drawex-fe
+spec:
+  selector:
+    matchLabels:
+      app: nivjayak-drawex-fe
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nivjayak-drawex-fe
+    spec:
+      containers:
+      - image: 191518685251.dkr.ecr.us-west-1.amazonaws.com/nivjayak-drawex-fe:latest
+        resources:
+          requests:
+            memory: "953Mi" # 128 MebiByte is equal to 135 Megabyte (MB)
+            cpu: "500m" # `m` means milliCPU
+          limits:
+            memory: "953Mi"
+            cpu: "1000m"  # 1000m is equal to 1 VCPU core
+        imagePullPolicy: Always
+        name: nivjayak-drawex-fe
+        ports:
+        - containerPort: 3000
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  namespace: default
+#  name: nivjayak-drawex-fe-service
+#spec:
+#  ports:
+#    - port: 80
+#      targetPort: 3000
+#      protocol: TCP
+#  type: NodePort
+#  selector:
+#    app: nivjayak-drawex-fe
+#---
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  namespace: default
+#  name: nivjayak-drawex-fe-ingress
+#  annotations:
+#    kubernetes.io/ingress.class: alb
+#    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+#    alb.ingress.kubernetes.io/certificate-arn:  arn:aws:acm:us-west-1:191518685251:certificate/7bc928cb-53f6-4f67-88aa-4700bc6d89cb
+#    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+#    alb.ingress.kubernetes.io/scheme: internet-facing
+#    alb.ingress.kubernetes.io/target-type: ip
+#spec:
+#  rules:
+#    - http:
+#        paths:
+#          - path: /*
+#            backend:
+#              serviceName: ssl-redirect
+#              servicePort: use-annotation
+#          - path: /*
+#            backend:
+#              serviceName: nivjayak-drawex-fe-service
+#              servicePort: 80
+#
