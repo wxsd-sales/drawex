@@ -27,7 +27,7 @@ MongoClient.connect(db.url, { useUnifiedTopology: true, useNewUrlParser: true },
   if (err) return console.log(err)
 
   console.log("MongoDb connected successfully")
-  database = database.db("docusign")
+  database = database.db("drawex")
   io.on('connection', function (socket) {
     const init_data = { rooms: all_room_info }
     setTimeout(function () {
