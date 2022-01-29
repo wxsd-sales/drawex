@@ -8,7 +8,7 @@ var MongoClient = require('mongodb').MongoClient;
 jest.setTimeout(30000);
 
 
-describe("Draw Guess Game", () => {
+describe("Drawex", () => {
   let io, serverSocket, clientSocket, database, connection;
 
   beforeAll(async (done) => {
