@@ -18,7 +18,7 @@ describe("Draw Guess Game", () => {
       useNewUrlParser: true,
     });
 
-    database = await connection.db("drawguess");
+    database = await connection.db("drawex");
     httpServer.listen(() => {
       const port = httpServer.address().port;
       clientSocket = new Client(`http://localhost:${port}`);
