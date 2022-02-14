@@ -53,7 +53,6 @@ module.exports = {
 
         if (flag) {
           socket.emit("setRoomInfo", current_room)
-
         } else {
           if (current_room.maxPlayers === current_room.currentPlayers) {
             socket.emit("roomFull")

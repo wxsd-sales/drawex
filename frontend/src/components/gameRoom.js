@@ -67,7 +67,7 @@ export default function GameRoom({ socket, userName, init_room }) {
   }
 
   function copyLinkText() {
-    var textValue = `http://localhost:3000/room/${roomInfo.roomID}`;
+    var textValue = `https://drawex-fe.wbx.ninja/room/${roomInfo.roomID}`;
     alert(textValue)
   }
 

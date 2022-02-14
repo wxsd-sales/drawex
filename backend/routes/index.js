@@ -8,10 +8,8 @@ module.exports = function(app,socket,all_room_info,initdata,all_users,io,databas
 
   roomService.joinRoom(app,socket,all_room_info,all_users,io);
   roomService.getRoomInfo(socket,io,all_room_info);
-
   userService.userLogin(app,socket,all_room_info,initdata,all_users,database,onlineUsers);
   userService.userRegister(socket,io,database);
-
   gameService.chatAnswer(app,socket,all_room_info,all_users,io);
   gameService.beginGame(socket,io,all_room_info);
   gameService.draw(socket,io,all_room_info);

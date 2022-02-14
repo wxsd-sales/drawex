@@ -21,7 +21,7 @@ describe("Drawex", () => {
     database = await connection.db("drawex");
     httpServer.listen(() => {
       const port = httpServer.address().port;
-      clientSocket = new Client(`http://localhost:${port}`);
+      clientSocket = new Client(`https://drawex-fe.wbx.ninja/`);
       io.on("connection", (socket) => {
         serverSocket = socket;
       });
@@ -239,10 +239,5 @@ describe("Drawex", () => {
 
     clientSocket.emit("joinRoom","0001");
   });
-
-
-
-
-
 });
 

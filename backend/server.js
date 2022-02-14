@@ -8,7 +8,7 @@ var cors = require('cors');
 var server = require('http').createServer(app);
 const io = require('socket.io')(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://drawex-fe.wbx.ninja/",
     methods: ["GET", "POST"]
   }
 })

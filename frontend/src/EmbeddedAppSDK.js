@@ -1,3 +1,4 @@
+
 const appContextUpdateEvent = 'application:displayContextChanged'; 
 const appShareStateUpdateEvent = 'application:shareStateChanged';
 const appThemeUpdateEvent = 'application:themeChanged';

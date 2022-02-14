@@ -14,7 +14,7 @@ import {
   Redirect
 } from "react-router-dom";
 
-const socket = io('ws://localhost:8000')
+const socket = io.connect('wss://drawex-be.wbx.ninja/', { transports: ['websocket', 'polling', 'flashsocket'] })
 
 function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName'))

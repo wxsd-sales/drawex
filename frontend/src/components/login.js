@@ -25,7 +25,6 @@ export default function Login({socket,handleLogin, embeddedAppSDK}) {
   }
 
   function handleNavToReg(){
-
     history.push('/register')
   }
 
