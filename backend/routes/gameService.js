@@ -76,7 +76,7 @@ module.exports = {
       var temp_data = get_current_room_by_id(all_room_info, roomID);
       const current_room = temp_data.current_room;
       const current_index = temp_data.current_index;
-      var drawerIndex = null;   //Find the index of drawer
+      var drawerIndex = null;   //Find the index of artist
       if (current_room) {
         for (i = 0; i < current_room.scoreBoard.length; i++) {
           current_room.scoreBoard[i].right = false

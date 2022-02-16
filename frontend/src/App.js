@@ -16,7 +16,9 @@ import {
 
 const socket = io.connect('wss://drawex-be.wbx.ninja/', { transports: ['websocket', 'polling', 'flashsocket'] })
 
-function App() {
+function App(embeddedAppSDK) {
+  console.log("here-------------------")
+  console.log(embeddedAppSDK);
   const [userName, setUserName] = React.useState(localStorage.getItem('userName'))
   const [rooms, setRooms] = React.useState([])
   const [isLogin, setLogin] = React.useState(false)
@@ -52,7 +54,7 @@ function App() {
             {userName === null ? <Redirect to="/login" /> :
               <div className="App">
                 <header className="App-header main-background">
-                  <Lobby socket={socket} userName={userName} rooms={rooms} isLogin={isLogin} handleLogin={handleLogin}></Lobby>
+                  <Lobby socket={socket} userName={userName} rooms={rooms} isLogin={isLogin} handleLogin={handleLogin} embeddedAppSDK={embeddedAppSDK}></Lobby>
                 </header>
               </div>
             }

@@ -4,8 +4,6 @@ import ChatWindow from "./ChatWindow.js";
 import "./styles.css";
 
 
-
-
 export default function Chat({ socket, userName, room }) {
   const [newMsg, setNewMsg] = useState("");
 
